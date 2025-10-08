@@ -1,0 +1,23 @@
+{
+  "name": "google-maps-scraper",
+  "version": "1.0.0",
+  "description": "Google Maps Scraper for Pella.app",
+  "main": "main.py",
+  "scripts": {
+    "start": "python3 main.py",
+    "test": "python3 test_setup.py"
+  },
+  "dependencies": {
+    "python": "3.11"
+  },
+  "runtime": "python",
+  "build": {
+    "commands": [
+      "pip install -r requirements.txt",
+      "python3 -m playwright install chromium"
+    ]
+  },
+  "env": {
+    "PYTHONPATH": "${PWD}"
+  }
+}
