@@ -78,15 +78,14 @@ def run_scraper_with_env():
         f.write(f"{project_name}\n")
         f.write("2\n")  # Prosegui (non ricominciare)
     
-    # Modifica temporaneamente sys.stdin per leggere dal file
-    original_stdin = sys.stdin
-    with open('input_config.txt', 'r') as f:
-        sys.stdin = f
-        try:
-            from scraper_maps import main as scraper_main
-            scraper_main()
-        finally:
-            sys.stdin = original_stdin
+    # Usa la versione ottimizzata per Render
+    try:
+        from scraper_maps_render import main as scraper_main
+        scraper_main()
+    except ImportError:
+        # Fallback alla versione originale se necessario
+        from scraper_maps import main as scraper_main
+        scraper_main()
     
     # Pulisci il file temporaneo
     try:
